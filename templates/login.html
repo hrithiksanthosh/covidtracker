@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <style>
+            <meta charset="UTF-8">
+            <title> Login </title>
+            <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        </style>
+    </head>
+    <body background="static/corona.png"></br></br></br></br></br>
+        <div align="center">
+          <div align="center">
+             <div class="header">
+                <h1 class="word">Government</h1>
+             </div></br>
+            <h2 class="word">
+                <form action="{{ url_for('login') }}" method="post">
+                  <div class="msg">{{ msg }}</div>
+                    <input id="username" name="username" type="text" placeholder="Username" class="textbox"/></br></br>
+                    <input id="password" name="password" type="password" placeholder="Password" class="textbox"/></br></br></br>
+                    <input type="submit" class="btn" value="Sign In"></br></br>
+                </form>
+            </h2>
+          </div>
+        </div>
+    </body>
+</html>
+

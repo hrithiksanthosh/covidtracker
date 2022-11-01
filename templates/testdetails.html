@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <style>
+            <meta charset="UTF-8">
+            <title> Index </title>
+            <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        </style>
+    </head>
+    <body background="static/corona.png"></br></br></br></br></br>
+        <div align="center">
+          <div align="center" class="border">
+             <div class="header">
+                <h1 class="word">COVID Test Results</h1>
+             </div></br>
+                <div class="word">
+                     Name: {{session.name}}</br>
+                     Email Id: {{session.email}}</br>
+                     Date of Birth: {{session.dateofbirth}}</br>
+                     Location: {{session.location}}</br>
+                     Date: {{session.date}} </br>
+                     Result: {{session.result}}</br>
+                </div></br></br>
+                <a href="{{ url_for('testresults') }}" class="btn">View another Report</a>
+          </div>
+        </div>
+    </body>
+</html>

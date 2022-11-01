@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <style>
+            <meta charset="UTF-8">
+            <title> Coviddata </title>
+            <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        </style>
+    </head>
+    <body background="static/corona.png"></br></br></br></br></br>
+         <div align="center">
+          <div align="center" class="border">
+             <div class="header">
+                <h1 class="word">TestResults</h1>
+             </div></br></br></br>
+                <h2 class="word">
+                <form action="{{ url_for('testresults') }}" method="post">
+                    <div class="msg">{{ msg }}</div>
+                    <div class="word">
+                        Unique Id is your first 4 letter of your first name and last two digit of your date of birth</br>
+                        Unique Id = Varu98 (username: Varun APK; dob: 12.07.1998)
+                    </div></br>
+                    <input id="uniqueId" name="uniqueId" type="text" placeholder="UniqueId" class="textbox"/></br></br>
+                    <input type="submit" class="btn" value="Submit"></br></br>
+                </form>
+                </h2>
+          </div>
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Covid Map</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='map.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script type="text/javascript"
+  src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
+</script>
+    <script type="text/javascript">
+  var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <script src="http://d3js.org/d3.geo.projection.v0.js"></script>
+  <script src="http://datamaps.github.io/scripts/datamaps.world.min.js?v=1"></script>
+    </head>
+<body>
+    <div class ="control">
+	<a href="{{ url_for('homepage') }}">
+		   <button class="home">Home</button>
+	</a>
+    </div >
+    <div class="heading">
+                <h2>Covid Map of Canada</h2>
+    </div>
+	<div id="canada"></div>
+</body>
+<script type="text/javascript">
+function updatemap(data){
+    var map;
+	map = new Datamap({
+		element: document.getElementById('canada'),
+		geographyConfig: {
+		highlightOnHover: false,
+			dataUrl: 'https://raw.githubusercontent.com/ReiAyame/Combining-Two-Countries-in-Datamaps/master/canada.topo.json'
+		},
+		scope: 'canada',
+		fills: {
+            "RISK" : "red",
+            "NORMAL":"green",
+            "CAUTION" : "orange",
+            defaultFill:"green"
+            },
+            data: {
+            },
+		setProjection: function(element) {
+			var projection = d3.geo.mercator()
+				.center([-95, 71])
+				.scale(200)
+				.translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+			var path = d3.geo.path().projection(projection);
+			return {path: path, projection: projection};
+		}
+	});
+    var data_updated={
+				'CA.MB': { fillKey: 'NORMAL' },
+                'CA.SK': { fillKey: 'NORMAL' },
+                'CA.AB': { fillKey: 'NORMAL' },
+                'CA.BC': { fillKey: 'NORMAL' },
+                'CA.NU': { fillKey: 'NORMAL' },
+                'CA.NT': { fillKey: 'NORMAL' },
+                'CA.NF': { fillKey: 'NORMAL' },
+                'CA.NB': { fillKey: 'NORMAL' },
+                'CA.NS': { fillKey: 'NORMAL' },
+                'CA.ON': { fillKey: 'NORMAL' },
+                'CA.PE': { fillKey: 'NORMAL' },
+                'CA.QC': { fillKey: 'NORMAL' },
+                'CA.YT': { fillKey: 'NORMAL' }
+				}
+        data_updated={
+				'CA.MB': { fillKey: data.MB },
+                'CA.SK': { fillKey: data.SK },
+                'CA.AB': { fillKey: data.AB },
+                'CA.BC': { fillKey: data.BC },
+                'CA.NU': { fillKey: data.NU },
+                'CA.NT': { fillKey: data.NT },
+                'CA.NF': { fillKey: data.NF },
+                'CA.NB': { fillKey: data.NB },
+                'CA.NS': { fillKey: data.NS },
+                'CA.ON': { fillKey: data.ON },
+                'CA.PE': { fillKey: data.PE },
+                'CA.QC': { fillKey: data.QC },
+                'CA.YT': { fillKey: data.YT }
+				}
+        map.updateChoropleth(data_updated)
+}
+
+function mapjson() {
+    $.getJSON($SCRIPT_ROOT + '/mapdata', function(data) {
+        updatemap(data)
+    });
+    }
+    mapjson();
+
+</script>
+</html>

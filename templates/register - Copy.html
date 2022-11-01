@@ -1,0 +1,65 @@
+<html>
+    <head>
+            <meta charset="UTF-8">
+            <title> Register </title>
+            <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body background="static/corona.png"></br></br></br></br></br>
+        <div align="center">
+          <div align="center">
+             <div class="header">
+                <h1 class="word">Register</h1>
+             </div>
+            <h2 class="word">
+                <form action="{{ url_for('register') }}" method="post">
+                  <div class="msg">{{ msg }}</div>
+                    <input id="name" name="name" type="text" placeholder="Name" class="textbox"/></br>
+                    <input id="dob" name="dob" type="text" placeholder="Date of birth" class="textbox"/></br>
+                    <input id="email" name="email" type="text" placeholder="Email ID" class="textbox"/></br>
+<!--                    <input id="location" name="location" type="text" placeholder="Location" class="textbox"/></br></br>-->
+                    <label for="location">Choose location</label></br>
+                    <select id="location" name="location" >
+                        <option value="Manitoba">Manitoba</option>
+                        <option value="Saskatchewan">Saskatchewan</option>
+                        <option value="Alberta">Alberta</option>
+                        <option value="British Columbia">British Columbia</option>
+                        <option value="Nunavut">Nunavut</option>
+                        <option value="New Brunswick">New Brunswick</option>
+                        <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+                        <option value="Nova Scotia">Nova Scotia</option>
+                        <option value="Ontario">Ontario</option>
+                        <option value="Prince Edward Island">Prince Edward Island</option>
+                        <option value="Québec">Québec</option>
+                        <option value="Yukon">Yukon</option>
+                        <option value="Northwest Territories">Northwest Territories</option>
+                    </select>
+                    <div>
+                        <div>
+                            <input type="radio" id="vaccinedetails" name="coviddata" class="bottom" data-rel="vaccine" value="vaccine"/> vaccine details
+                                <span class="vaccine content">
+                                    <input id="dosenumber" name="dosenumber" type="text" placeholder="Which Dose"  class="textbox"/></br>
+                                    <input id="vaccinedate" name="vaccinedate" type="text" placeholder="Date" class="textbox"/></br>
+                                    <input id="vaccinename" name="vaccinename" type="text" placeholder="Vaccine Name" class="textbox"/></br></br>
+                                </span>
+                        </div>
+                        <div>
+                            <input type="radio" id="testresults"  name="coviddata" data-rel="test" value="test"/> test results
+                            <span class="test content">
+                                <input id="testdate" name="testdate" type="text" placeholder="Date" class="textbox"/></br>
+<!--                               <input id="testresult" name="testresult" type="text" placeholder="Result" class="textbox"/></br></br>-->
+                                <label for="testresult">Select Covid Test Result</label></br>
+                                <select id="testresult" name="testresult" >
+                                    <option value="Positive">Positive</option>
+                                    <option value="Negative">Negative</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div></br>
+                    <input type="submit" class="btn" value="Register"></br></br>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </form>
+            </h2>
+          </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+#canada {
+	height: 600px;
+	width: 100%;
+}
+.heading{
+  padding: 2px;
+  text-align: center;
+  background: darkslategrey;
+  color: white;
+  font-size: 15px;
+}
+.control{
+  padding: 2px;
+  background: darkslategrey;
+  text-align: right;
+}
+
